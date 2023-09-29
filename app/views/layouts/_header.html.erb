@@ -1,16 +1,43 @@
 <header class="navbar-fixed">
+
 <nav class=" light-blue darken-3">
   <div class="container nav-wrapper">
   <%= link_to "X-Shop" , root_path, class: "brand-logo" %>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-            <%= link_to "About" , about_path %>
 
- 
+    <ul class="right hide-on-med-and-down">
+        <li><%= link_to "About" , about_path %></li>
+
+    <% if user_signed_in? %>
+        <li><%= link_to "Logout" , destroy_user_session_path, method: :delete %></li>
+    <% else %>
+        <li><%= link_to "Login" , new_user_session_path %></li>
+        <li><%= link_to "Registrati" , new_user_registration_path %></li>
+    <% end  %>
+    
   </ul>
  
   </div>
+  </nav>
+  
+  </header>
+  <ul class="sidenav" id="mobile-demo">
+  <li><%= link_to "About" , about_path %></li>
+  
+      <% if user_signed_in? %>
+          <li><%= link_to "Logout" , destroy_user_session_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to "Login" , new_user_session_path %></li>
+          <li><%= link_to "Registrati" , new_user_registration_path %></li>
+      <% end  %>
+      
+    </ul>
+    <script>
+    M.AutoInit();
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+    </script>
 
 
-</nav>
-</header>
