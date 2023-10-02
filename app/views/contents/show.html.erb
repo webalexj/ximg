@@ -1,40 +1,40 @@
 <p style="color: green"><%= notice %></p>
-<table>
-<tr>
-<td>
-<%= image_tag @content.cover.url(:medium) %>
-</td>
-</tr>
-<tr>
-<td>
-<p>_content.html.erb (parziale per non riscrivee codice)</p>
-<%= render @content %>
+<p>&nbsp;</p>
+<div class="row">
+        <div class="col l6">
+             <%= image_tag @content.cover.url, class: "responsive-img show-img" %>
+        </div>
 
- </td><td>
- <p>variabili inpagina posizioanbili come vogliamo (manuale)</p>
-<p>
-<b>Titolo: </b> <%= @content.titolo %>
-</p>
+        <div class="col l6 ">
 
-<p>
-<b>Descrizione: </b> <%= @content.descrizione %>
-</p>
+              <h1 class="show-titolo"><%= @content.titolo %></h1>
+              <h4 class="show-price"><%= number_to_currency(@content.price) %>
+              </h4>
+              <p class="show-p"> <b>Venduto da: </b> <%= @content.user.name %> </p>
 
-<p>
-<b>Prezzo: </b> <%= @content.price %>
-</p>
-</td>
-</tr>
-</table>
+              <p class="show-p"> <b>Descrizione: </b> <br><%= @content.descrizione %>
+              </p>
 
-<div>
 
-<% if @content.user == current_user%>
-  <%= link_to "Edit this content", edit_content_path(@content) %> |
-  <% end %>
-  <%= link_to "Back to contents", contents_path %>
+        </div>
+             
+
+              
+</div>
+ 
+
+<div style="display:flex;">
 
   <% if @content.user == current_user%>
-  <%= button_to "Destroy this content", @content, method: :delete %>
+  <br>  <%= link_to "Torna a Shop", contents_path , class: "btn"%>  
+  &nbsp;  &nbsp; 
+   <%= link_to "Modifica", edit_content_path(@content), class: "btn" %> &nbsp;  
+  <% end %> &nbsp; 
+
+  <% if @content.user == current_user%>
+ 
+  
+  <%= button_to "Elimina", @content, method: :delete, data: { turbo_confirm: 'Sei sicuro di cancellare?'} , class: "btn red darken-2" %>
+  <p>&nbsp;</p>
   <% end %>
 </div>

@@ -35,64 +35,10 @@
         
 
 
-<div class="row">
-
-  
-  <div class="col s2">
-  <strong>Titolox:</strong>
-  </div>
-  <div class="col s2">
-    <strong>Descrizione:</strong>
-    </div>
-    <div class="col s2">
-  <strong>Nome:</strong>
-  </div>
-
-    <div class="col s6">
-    <strong>Prezzo:</strong>
-    </div>
-
+ 
 </div>
 <hr>
-  <% @contents.each do |try|    %>
-    
-        <div class="row">
-
-   
-            <div class="col s2">
-            <%= try.titolo %>
-            </div>
-            <div class="col s2">
-            <%= try.descrizione %>
-            </div>
-            <div class="col s2">
-            <%= try.user.name %>
-            </div>
   
-            <div class="col s3">
-            <%= try.price %>
-            </div>
-            <div class="col s1">
-                <%= link_to "Mostra", try %>
-                </div>
-
-                <% if try.user == current_user%>
-                  <div class="col s1">
-                    <%= link_to "Modifica", edit_content_path(try) %>
-                  </div>
-                  <div class="col s1">
-                    <%= button_to "Canc", try, method: :delete, data: {turbo: true, turbo_confirm: 'Sei sicuro?'} %>
-                  </div>
-                <% else %>
-                <div class="col s1"></div>
-                <div class="col s1"></div>
-                <% end %>
-                </div>
-        
-            <p>
-            
-            </p>
-          <%    end %>
-        </div>
-
-<%= link_to "New content", new_content_path %>
+       
+<p>
+<%= link_to "Inserisci nuovo articolo/contenuto", new_content_path , class: "btn" %></p>
