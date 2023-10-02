@@ -5,11 +5,12 @@ Sei già registrato?
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 Non sei ancora iscritto? 
-<div style=float:right;><%= link_to "Registrati", new_registration_path(resource_name) %></div><br />
+<div style=float:right;><%= link_to "Registrati subito", new_registration_path(resource_name) %></div><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-<div style=float:right;><%= link_to "Password dimenticata?", new_password_path(resource_name) %></div><br />
+Password dimenticata?
+<div style=float:right;><%= link_to "Clicca qui per resettarla", new_password_path(resource_name) %></div><br />
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

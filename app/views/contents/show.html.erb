@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+<table>
+<tr>
+<td>
+<p>_content.html.erb (parziale per non riscrivee codice)</p>
+<%= render @content %>
+
+ </td><td>
+ <p>variabili inpagina posizioanbili come vogliamo (manuale)</p>
+<p>
+<b>Titolo: </b> <%= @content.titolo %>
+</p>
+
+<p>
+<b>Descrizione: </b> <%= @content.descrizione %>
+</p>
+
+<p>
+<b>Prezzo: </b> <%= @content.price %>
+</p>
+</td>
+</tr>
+</table>
+
+<div>
+
+<% if @content.user == current_user%>
+  <%= link_to "Edit this content", edit_content_path(@content) %> |
+  <% end %>
+  <%= link_to "Back to contents", contents_path %>
+
+  <% if @content.user == current_user%>
+  <%= button_to "Destroy this content", @content, method: :delete %>
+  <% end %>
+</div>

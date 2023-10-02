@@ -7,7 +7,8 @@
 
     <ul class="right hide-on-med-and-down">
         <li><%= link_to "About" , about_path %></li>
-
+        <li><a href="/contents">Shop</a>xx </li>
+  
     <% if user_signed_in? %>
         <li><%= link_to "Logout" , destroy_user_session_path, method: :delete %></li>
     <% else %>
@@ -22,7 +23,9 @@
   
   </header>
   <ul class="sidenav" id="mobile-demo">
-  <li><%= link_to "About" , about_path %></li>
+ 
+  <li><%= link_to "About" , about_path %> </li>
+  <li><a href="/contents">Shop</a>xx </li>
   
       <% if user_signed_in? %>
           <li><%= link_to "Logout" , destroy_user_session_path, method: :delete %></li>
