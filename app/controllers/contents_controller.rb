@@ -29,7 +29,7 @@ class ContentsController < ApplicationController
 
     respond_to do |format|
       if @content.save
-        format.html { redirect_to content_url(@content), notice: "Content was successfully created." }
+        format.html { redirect_to content_url(@content), notice: "Contenuto creato correttamente." }
         format.json { render :show, status: :created, location: @content }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class ContentsController < ApplicationController
   def update
     respond_to do |format|
       if @content.update(content_params)
-        format.html { redirect_to content_url(@content), notice: "Content was successfully updated." }
+        format.html { redirect_to content_url(@content), notice: "Contenuto aggiornato con successo." }
         format.json { render :show, status: :ok, location: @content }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,26 +56,40 @@ class ContentsController < ApplicationController
     @content.destroy
 
     respond_to do |format|
-      format.html { redirect_to contents_url, notice: "Content was successfully destroyed." }
+      format.html { redirect_to contents_url, notice: "Contenuro definitivamene eliminato." }
       format.json { head :no_content }
     end
   end
 
+  def acceptable_image
+    return unless main_image.attached?
+  
+    unless main_image.blob.byte_size <= 1.megabyte
+      errors.add(:main_image, "is too big")
+    end
+  end
+
+  
+  
+  
   private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_content
       @content = Content.find(params[:id])
     end
-
+ 
     # Only allow a list of trusted parameters through.
     def content_params
-      params.require(:content).permit(:titolo, :descrizione, :price)
+      params.require(:content).permit(:titolo, :descrizione, :price, :cover, :allegato)
     end
 
     
  def check_user
   if current_user != @content.user
-    redirect_to root_url, alert: "non hai accesso al contenuto"
+    redirect_to root_url, alert: "Non hai accesso al contenuto"
   end
  end
+
+
 end

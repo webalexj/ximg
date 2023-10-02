@@ -1,8 +1,40 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Contents</h1>
+<!-- <h1>Contents</h1> -->
 
 <div id="contents">
+
+<div class="row">
+
+   
+    <% @contents.each do |try|    %>
+
+      <div class="col s3">
+              <div class="card">
+                         <div class="card-image waves-effect waves-block waves-light">
+                         <%= image_tag try.cover.url(:medium) %>
+                              
+                          </div>
+                          <div class="card-content">
+                               <span class="card-title activator grey-text text-darken-4" style="text-transform:capitalize !important"> <%= try.titolo %><i class="material-icons right">more_vert</i></span></span>
+
+                          <div> <span class="right" style="padding-right:10px !important">  <%= number_to_currency(try.price) %></span> Venduto da    <%= try.user.name %>
+                       
+                      </div>
+                        </div>
+                      
+                      <div class="card-action" style="text-align:center;">
+                        <a href="#"> <%= link_to "Scopri di più", try , class: "btn" %></a>
+                        
+                      </div>
+              </div>
+
+      </div>
+    <%    end %>
+  </div>
+        
+
+
 <div class="row">
 
   
@@ -60,9 +92,7 @@
             <p>
             
             </p>
-          <% 
- 
-        end %>
+          <%    end %>
         </div>
 
 <%= link_to "New content", new_content_path %>
