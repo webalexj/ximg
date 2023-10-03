@@ -10,7 +10,14 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="borderato">
+  <br>
+ <p class="form_all">Carica il contenuto/articolo che vuoi mettere in vendita (formati supportati: Powerpoint, Excel, PDF, Word, Immagini e Mp3)</p> 
+  <%= form.file_field :allegato %>
+  <br>
+  <br>
+  </div>
+  <br>
   <div>
     <%= form.label :titolo, style: "display: block" %>
     <%= form.text_field :titolo %>
@@ -18,23 +25,22 @@
 
   <div>
     <%= form.label :descrizione, style: "display: block" %>
-    <%= form.text_area :descrizione %>
+    <%= form.text_area :descrizione, class: "materialize-textarea" %>
   </div>
   
   <div>
-    <%= form.label :price, style: "display: block" %>
+    <%= form.label :prezzo, style: "display: block" %>
     <%= form.text_field :price %>
   </div>
-  <div>
-  <%= form.label :cover %><br>
-  <%= form.file_field :cover %>
+  <div class="borderato">
+  <p class="form_all">Carica un'immagine da utilizzare per il tuo contenuto/articolo </p>
+  <%= form.file_field :cover %><br>
+  <br>
   </div>
+ 
+  <br><br>
   <div>
-  <%= form.label :allegato %><br>
-  <%= form.file_field :allegato %>
+    <%= form.submit 'Salva Contenuto' , class: "btn  light-blue darken-3" %>
   </div>
   <br>
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

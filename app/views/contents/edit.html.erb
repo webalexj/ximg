@@ -1,38 +1,9 @@
-<h1>Editing content</h1>
+<h1 class="center">Modifica Articolo  "<%= @content.titolo %>"</h1>
  
 
 
 <br>
-<%= form_for @content, html: { multipart: true } do |form| %>
-  
-
-  <div>
-    <%= form.label :titolo, style: "display: block" %>
-    <%= form.text_field :titolo %>
-  </div>
-
-  <div>
-    <%= form.label :descrizione, style: "display: block" %>
-    <%= form.text_area :descrizione %>
-  </div>
-  
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
-  </div>
-  <div>
-  <%= form.label :Immagine %><br>
-  <%= form.file_field :cover %>
-  </div>
-  <div>
-  <%= form.label :allegato %><br>
-  <%= form.file_field :allegato %>
-  </div>
-  <br>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render "form", content: @content %>
 
 <br>
 
